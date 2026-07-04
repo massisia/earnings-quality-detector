@@ -6162,7 +6162,7 @@ const rowsPerPage = 20;
 let highlightedTicker = null;
 
 const dashboardStats = {
-  universeAvg: (eqData.reduce((s,d) => s + d.earnings_quality_score, 0) / eqData.length).toFixed(3),
+  universeAvg: (eqData.filter(d => d.scoring_method === 'Full Score (CCR + Accrual)').reduce((s,d) => s + d.earnings_quality_score, 0) / eqData.filter(d => d.scoring_method === 'Full Score (CCR + Accrual)').length).toFixed(3),
   totalCompanies: eqData.length,
   sectorAverages: Object.fromEntries(
     [...new Set(eqData.map(d => d['GICS Sector']))].map(sector => {
