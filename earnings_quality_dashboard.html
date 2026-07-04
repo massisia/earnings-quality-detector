@@ -6429,6 +6429,7 @@ async function runAiSearch() {
     });
 
     const filterResult = await filterResponse.json();
+    if (!filterResult || !filterResult.filters) { responseText.textContent = 'Could not parse query. Try rephrasing.'; return; }
 
     // Step 2: Apply filters client-side
     filteredData = eqData.filter(d => {
